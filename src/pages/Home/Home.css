@@ -1,0 +1,89 @@
+.home {
+    background-color: #311d3f;
+}
+
+.home-page {
+    height: 200vh;
+    padding: 0;
+    border-left: 1px solid rgba(192, 192, 192, 0.534);
+    border-right: 1px solid rgba(192, 192, 192, 0.534);
+
+
+}
+
+.side-bar {
+    position: sticky;
+    height: 100vh;
+    padding: 0;
+
+
+}
+
+.side-bar-fixed {
+    position: fixed;
+
+}
+
+.request-fixed {
+    position: fixed;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.request-fixed::-webkit-scrollbar{
+    display: none;
+}
+
+.side-bar-fixed img {
+    margin-left: 20%;
+    width: 50%;
+    height: 100px;
+    object-fit: cover;
+}
+.side-bar-icons{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    color: white;
+    gap:7px;
+}
+.side-bar-icons div{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+    overflow: hidden;
+}
+.side-bar-icons div:hover{
+   transform: translateX(-10px);
+}
+img.q-logo{
+    align-items: center;
+   width: 50%;
+   margin-left: 10px;
+   height: 100px;
+   object-fit: cover;
+   object-fit: contain; 
+}
+@media (max-width:620px){
+    .side-bar-icons div p{
+       display: none;
+    }
+    .side-bar-icons{
+        margin-left: 10px;
+        align-items: center;
+        gap: 30px;
+    
+    }
+    .side-bar-fixed{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .side-bar-icons div:hover{
+        transform: translateX(0);
+        opacity: 0.6;
+     }
+}
