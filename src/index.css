@@ -1,7 +1,16 @@
 body{
   margin: 0;
   padding: 0;
+  background-color: #311d3f;
 }
 *{
   box-sizing: border-box;
+}
+.flex-sb{
+  display: flex;
+  justify-content: space-between;
+}
+.flex{
+  display: flex;
+  align-items: center;
 }
