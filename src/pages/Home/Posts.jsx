@@ -6,8 +6,17 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 const Posts = (props) => {
   const [liked, setLiked] = useState(false);
+  const [likedCount,setLikedCount] = useState(Number(props.like))
   const likeHandler = () => {
-    setLiked(!liked);
+    setLiked(()=>{
+      if(liked){
+        setLikedCount(likedCount-1)
+        return false;
+      }else{
+        setLikedCount(likedCount+1)
+        return true;
+      }
+    });
   };
   return (
     <div className="post-parent">
@@ -34,9 +43,9 @@ const Posts = (props) => {
             style={{ cursor: "pointer" }}
           />{" "}
         </div>
-        <p className="post-username">{props.like} likes</p>
-        <p className="view-comments">View all {props.comments} comments</p>
-        <p className="add-comments">Add a comment..</p>
+        <p className="post-username">{likedCount} likes</p>
+        <p className="view-comments">View all {props.comments} comment</p>
+        <div className="flex-sb"><input type="text" placeholder="add comments..." className="input-add-comment" /><button className="post-comment">post</button></div>
       </div>
     </div>
   );

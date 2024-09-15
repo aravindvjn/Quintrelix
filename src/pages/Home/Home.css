@@ -27,6 +27,7 @@
     position: fixed;
     height: 100vh;
     overflow-y: scroll;
+    width: 19%;
 }
 
 .request-fixed::-webkit-scrollbar {
@@ -85,7 +86,7 @@ img.q-logo {
     flex-direction: column;
     margin-left: 20%;
     border-bottom: 1px solid rgba(192, 192, 192, 0.534);
-    padding: 20px 0px;
+    padding: 20px 0px 5px 0px;
 }
 
 .post-parent {
@@ -100,14 +101,6 @@ img.q-logo {
     margin: auto 0;
 }
 
-.flex-sb button {
-    background: transparent;
-    border-radius: 5px;
-    border: 1px solid blue;
-    color: blue;
-    margin: 10px 0px;
-    align-items: center;
-}
 
 .view-comments,
 .post-caption,
@@ -116,14 +109,17 @@ img.q-logo {
     font-size: 13px;
     margin: 0;
 }
-.post-profile{
+
+.post-profile {
     height: 30px;
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;
     border: 1px solid silver;
 }
+
 .post-caption {
+    font-size: 14px;
     margin-bottom: 5px;
 }
 
@@ -133,6 +129,54 @@ img.q-logo {
 
 .add-comments {
     opacity: 0.5;
+}
+
+.input-add-comment {
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.input-add-comment:focus {
+    outline-width: 0;
+}
+
+.input-add-comment::placeholder {
+    padding-left: 0;
+    font-size: 13px;
+
+}
+
+.post-comment {
+    border: none;
+    background: transparent;
+    color: rgb(255, 255, 255);
+
+}
+
+.post-comment:hover {
+    color: rgb(0, 255, 0);
+}
+
+.accept-request,.reject-request {
+    text-align: center;
+    margin: auto;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    margin-left: 5px;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.accept-request:hover {
+    color: rgb(0, 255, 34);
+    border: 1px solid rgb(0, 255, 85);
+}
+.reject-request:hover{
+    color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
 }
 
 

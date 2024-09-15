@@ -5,6 +5,7 @@ import SideBar from "./SideBar";
 import Request from "./Request";
 const Home = () => {
   const [desktop, setDesktop] = useState(window.innerWidth > 576);
+  const [currentPage,setCurrentPage] = useState("Home")
   window.addEventListener("resize", () => {
     setDesktop(window.innerWidth > 576 ? true : false)
   });
