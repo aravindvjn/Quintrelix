@@ -10,8 +10,9 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" exa  element={<Home />}/>
         <Route path="/auth"  element={<Auth />}/>
+        <Route exact path="/"  element={<Home />}/>
+        
       </Routes>
     </BrowserRouter>
     </>
