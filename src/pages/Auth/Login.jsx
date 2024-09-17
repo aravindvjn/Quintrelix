@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext, FirebaseContext } from "../../firebase/context";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { FirebaseContext } from "../../firebase/context";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import Warning from "./warning";
+import Warning from "./Warning";
 
 const Login = ({ setLogin, setWarning }) => {
 
