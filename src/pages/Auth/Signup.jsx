@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FirebaseContext } from "../../firebase/context";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import Warning from "./warning";
+import Warning from "./Warning";
 
 const Signup = ({ setLogin, setWarning }) => {
   const [inputs, setInputs] = useState({
