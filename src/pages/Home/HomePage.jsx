@@ -5,7 +5,7 @@ import demo from "../../assets/demo.jpg";
 import Chat from "./Chat";
 import Development from "../Development/Development";
 import Create from "./Create";
-import Loading from "../Loading/loading";
+import Loading from '../Loading/Loading.jsx'
 import Notifications from "./Features/Notifications";
 import ChatWindow from "../Development/ChatWindow/ChatWindow";
 
