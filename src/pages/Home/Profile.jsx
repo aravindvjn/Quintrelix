@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { AuthContext, FirebaseContext } from "../../firebase/context";
 import Posts from "./Posts";
-import Loading from "../Loading/loading";
+import Loading from "../Loading/Loading";
 import { deleteDoc, doc, Firestore } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
 
