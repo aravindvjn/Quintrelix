@@ -46,12 +46,31 @@ input::placeholder{
     background-color: #311d3f;
     border: 2px solid white;
 }
+.warning-div{
+    display: flex;
+    justify-content: center;
+}
 
-
+.warning-div p{
+    color: black;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+    padding: 3px;
+    background-color: rgb(255, 255, 3);
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgb(100, 100, 100),-1px -1px 3px rgb(100, 100, 100);
+}
 
 
 @media (min-width:800px){
     .input-div input{
         width: 350px;
+    }
+    
+}
+@media (max-width:576px){
+    .warning-div p{
+        width: 60%;
     }
 }

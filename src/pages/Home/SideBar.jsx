@@ -9,33 +9,33 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-const SideBar = ({ desktop }) => {
+const SideBar = ({ user,desktop,setCurrentPage }) => {
   return (
     <div className="side-bar col-sm-3 col-2">
       <div className="side-bar-fixed col-sm-3 col-2">
         {desktop ? <img src={logo} alt="" /> : <img src={Qlogo} className="q-logo" />}
         <div className="side-bar-icons">
-          <div>
+          <div onClick={()=>setCurrentPage("Home") }>
             <HomeIcon fontSize="medium" sx={{ color: "white" }} />
             <p>Home</p>
           </div>
-          <div>
-          <SearchIcon fontSize="medium" sx={{ color: "white" }} />
+          <div onClick={()=>setCurrentPage("Search") }>
+          <SearchIcon fontSize="medium" sx={{ color: "white"  }} />
             <p>Search</p>
           </div>
-          <div>
+          <div onClick={()=>setCurrentPage("Chats") }>
             <ChatBubbleOutlineIcon fontSize="medium" sx={{ color: "white" }} />
             <p>Chats</p>
           </div>
-          <div>
+          <div onClick={()=>setCurrentPage("Notification") }>
             <NotificationsNoneIcon fontSize="medium" sx={{ color: "white" }} />
             <p>Notification</p>
           </div>
-          <div>
+          <div onClick={()=>setCurrentPage("Create") }>
             <AddCircleOutlineIcon fontSize="medium" sx={{ color: "white" }} />
             <p>Create</p>
           </div>
-          <div>
+          <div onClick={()=>setCurrentPage("Profile") }>
             <AccountCircleIcon fontSize="medium" sx={{ color: "white" }} />
             <p>Profile</p>
           </div>

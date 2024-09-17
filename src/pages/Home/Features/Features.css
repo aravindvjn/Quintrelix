@@ -1,0 +1,20 @@
+.notification-parent{
+    padding: 30px;
+}
+.notification{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.notification p{
+    color: black;
+    font-size: 14px;
+    line-height: 16px;
+}
+@media (max-width:1000px){
+    .notification p{
+        color: black;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

@@ -1,21 +1,62 @@
-import React from 'react'
-import Posts from './Posts'
+import React, { useEffect, useState } from "react";
+import Posts from "./Posts";
+import Profile from "./Profile";
+import demo from "../../assets/demo.jpg";
+import Chat from "./Chat";
+import Development from "../Development/Development";
+import Create from "./Create";
+import Loading from "../Loading/loading";
+import Notifications from "./Features/Notifications";
+import ChatWindow from "../Development/ChatWindow/ChatWindow";
 
-const HomePage = () => {
-    const user={
-        username:"aravind",
-        caption:"Good Morning",
-        like:"1200",
-        comments:'13'
-    }
+const HomePage = ({
+  currentPage,
+  postsFromFireBase,
+  setCurrentPage,
+  fetchUsersData,
+  fetchFreindsData
+}) => {
+  useEffect(() => {
+    console.log("posts", postsFromFireBase);
+    console.log("users", fetchUsersData);
+    console.log("friends", fetchFreindsData);
+  }, [postsFromFireBase, fetchUsersData,fetchFreindsData]);
+
+
+  const [chatWith,setChatWith] = useState();
   return (
-    <div className='home-page col-sm-6 col-10'>
-      <div className="container-sm">
-        <Posts {...user} />
-        <Posts {...user} />
-      </div>
+    <div className="home-page col-sm-6 col-10">
+      {currentPage === "Profile" && (
+        <Profile
+          setCurrentPage={setCurrentPage}
+          postsFromFireBase={postsFromFireBase}
+          fetchUsersData={fetchUsersData}
+        />
+      )}
+      {currentPage === "Notification" &&  (
+        <Notifications />
+      )}
+      {currentPage === "Create" && <Create setCurrentPage={setCurrentPage} />}
+      {currentPage === "Search" && <Development maintenance={currentPage} />}
+      {currentPage === "Chats" && <Chat setCurrentPage={setCurrentPage} setChatWith={setChatWith} fetchUsersData={fetchUsersData} fetchFreindsData={fetchFreindsData}/>}
+      {currentPage === "ChatWindow" && <ChatWindow chatWith={chatWith} />}
+      {currentPage === "Home" && (
+        <div className="container-sm">
+          {postsFromFireBase ? (
+            postsFromFireBase.map((post,index) => {
+              const userID = fetchUsersData.filter((user) => {
+                return post.userId === user.id;
+              });
+              console.log("userID", userID[0].username);
+              return <Posts key={index} {...post} username={userID[0].username} />;
+            })
+          ) : (
+            <Loading />
+          )}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

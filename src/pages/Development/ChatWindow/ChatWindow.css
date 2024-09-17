@@ -1,0 +1,101 @@
+.chat-window-parent {
+    width: 60%;
+    margin: auto;
+    height: 98vh;
+    position: sticky;
+    overflow: hidden;
+    right: 0;
+}
+
+.chat-window-header {
+    position: absolute;
+
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 70px;
+}
+
+.chat-window-body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    left: 0;
+    top: 70px;
+    bottom: 70px;
+    overflow-y: scroll ;
+    scroll-behavior: smooth;
+}
+.chat-window-body::-webkit-scrollbar{
+    display: none;
+}
+
+.chat-window-footer {
+
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 70px;
+}
+.messages{
+
+    background-color: white;
+    padding: 0px 5px;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 60%;
+    margin: 10px;
+}
+.messages p{
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    padding: 5px;
+    margin: 0;
+    overflow-wrap: break-word;
+}
+.send{
+    flex-direction: column-reverse;
+    align-self: flex-end;
+    background-color: rgb(13, 255, 0);
+}
+.recieve{
+    flex-direction: column-reverse;
+    align-self: flex-start;
+}
+.chat-window-input{
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    resize: none;
+    min-height: 50px;
+    max-height: 200px;
+
+}
+.chat-window-send-button{
+    background-color: rgb(0, 137, 0);
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 10px;
+
+}
+
+@media (max-width:1200px) {
+    .chat-window-parent {
+        width: 70%;
+    }
+}
+
+@media (max-width:620px) {
+    .chat-window-parent {
+        width: 100%;
+
+    }
+}
+
+
