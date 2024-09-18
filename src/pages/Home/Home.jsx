@@ -14,6 +14,8 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
+import ServerLoading from "../Loading/ServerLoading";
+import Timer from "../Loading/Timer";
 const Home = () => {
   const [fetchUsersData, setFetchUsersData] = useState([]);
   const [fetchFreindsData, setFetchFreindsData] = useState([]);
@@ -22,6 +24,9 @@ const Home = () => {
   const { auth } = useContext(FirebaseContext);
   const [desktop, setDesktop] = useState(window.innerWidth > 576);
   const [currentPage, setCurrentPage] = useState("Home");
+  const [serverLoading, setServerLoading] = useState(true);
+  const [timer, SetTimer] = useState(false);
+  const [count,setCount]=useState(true)
   window.addEventListener("resize", () => {
     setDesktop(window.innerWidth > 576 ? true : false);
   });
@@ -49,7 +54,7 @@ const Home = () => {
         ...doc.data(),
       }));
       setPostsFromFireBase(userList);
-      console.log("images datas",userList);
+      console.log("images datas", userList);
     }
     async function fetchUser() {
       const usersCollection = collection(firestore, "users");
@@ -60,6 +65,14 @@ const Home = () => {
       }));
       setFetchUsersData(userList);
       console.log("users datas", userList);
+      if (count) {
+        SetTimer(true);
+        setServerLoading(false);
+        setTimeout(() => {
+          SetTimer(false);
+          setCount(false)
+        }, 5000);
+      }
     }
     async function fetchFriends() {
       const usersCollection = collection(firestore, user.uid);
@@ -79,6 +92,8 @@ const Home = () => {
   }, [currentPage]);
   return (
     <div className="home row">
+      {timer && <Timer />}
+      {serverLoading && <ServerLoading />}
       <SideBar user={user} desktop={desktop} setCurrentPage={setCurrentPage} />
       <HomePage
         currentPage={currentPage}

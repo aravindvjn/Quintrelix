@@ -5,8 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import Warning from "./Warning";
 
-const Login = ({ setLogin, setWarning }) => {
-
+const Login = ({ setLogin, setWarning, setServerLoading }) => {
   const history = useNavigate();
   const [inputs, setInputs] = useState({
     email: "",
@@ -43,6 +42,7 @@ const Login = ({ setLogin, setWarning }) => {
       <button
         id="loginBtn"
         onClick={async () => {
+          setServerLoading(true);
           if (!inputs.email.includes("@")) {
             setWarning(<Warning warning={"Invalid E-mail address"} />);
           } else if (!inputs.password || !inputs.email) {
@@ -65,14 +65,11 @@ const Login = ({ setLogin, setWarning }) => {
                 setWarning(<Warning warning={"No user found!"} />);
               }
             } catch (error) {
-              setWarning(
-                <Warning
-                  warning={"No user found!\n Please login first"}
-                />
-              );
-              setLogin(false);
+              setWarning(<Warning warning={"Something is wrong!!!"} />);
             }
           }
+
+          setServerLoading(false);
         }}
       >
         Log In

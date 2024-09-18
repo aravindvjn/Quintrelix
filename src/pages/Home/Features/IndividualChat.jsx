@@ -9,7 +9,7 @@ const IndividualChat = ({setChatWith,person,setCurrentPage}) => {
       console.log("the person",person)
       setChatWith(person)
     }} >
-      <Avatar avatar={avatar} />
+      <Avatar avatar={person.ProfilePicture ||avatar} />
       <p>{person.username}</p>
     </div>
   );

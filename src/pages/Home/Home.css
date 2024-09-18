@@ -74,10 +74,13 @@ img.q-logo {
 }
 
 .post-img {
+    background-color: black;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 2px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .post,
@@ -124,7 +127,6 @@ img.q-logo {
 
 .post-caption {
     font-size: 14px;
-    margin-bottom: 5px;
 }
 
 .view-comments {
@@ -152,7 +154,15 @@ img.q-logo {
     font-size: 13px;
 
 }
+.search-bar{
+    color: black;
+    margin-top: 30px;
+    width: 100%;
+    border-radius: 10px;
+}
+.search-parent{
 
+}
 .post-comment {
     border: none;
     background: transparent;
@@ -192,6 +202,7 @@ img.q-logo {
     height: 130px;
     object-fit: cover;
     border-radius: 50%;
+    border: 1px solid silver;
 }
 
 p#profile-username {
@@ -248,6 +259,7 @@ button.logout {
     font-size: 12px;
     border: 1px solid white;
     margin: 5px;
+    height: 27px;
 }
 
 .create-div {
@@ -415,7 +427,7 @@ button.logout {
         gap: 30px;
 
     }
-
+    
     .side-bar-fixed {
         display: flex;
         flex-direction: column;

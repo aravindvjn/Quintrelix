@@ -3,7 +3,7 @@ import defaultAvatar from '../../../assets/defaultProfile.jpg'
 const Avatar = ({avatar}) => {
   return (
     <div>
-      <img src={avatar || defaultAvatar} alt="" id="avatar" />
+      <img src={avatar || defaultAvatar} alt="" id="avatar" style={{objectFit:'cover'}} />
     </div>
   )
 }

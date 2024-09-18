@@ -8,6 +8,7 @@ import Create from "./Create";
 import Loading from '../Loading/Loading.jsx'
 import Notifications from "./Features/Notifications";
 import ChatWindow from "../Development/ChatWindow/ChatWindow";
+import Search from "./Search/Search.jsx";
 
 const HomePage = ({
   currentPage,
@@ -31,13 +32,14 @@ const HomePage = ({
           setCurrentPage={setCurrentPage}
           postsFromFireBase={postsFromFireBase}
           fetchUsersData={fetchUsersData}
+          fetchFreindsData={fetchFreindsData}
         />
       )}
       {currentPage === "Notification" &&  (
         <Notifications />
       )}
       {currentPage === "Create" && <Create setCurrentPage={setCurrentPage} />}
-      {currentPage === "Search" && <Development maintenance={currentPage} />}
+      {currentPage === "Search" && <Search fetchUsersData={fetchUsersData} fetchFreindsData={fetchFreindsData} />}
       {currentPage === "Chats" && <Chat setCurrentPage={setCurrentPage} setChatWith={setChatWith} fetchUsersData={fetchUsersData} fetchFreindsData={fetchFreindsData}/>}
       {currentPage === "ChatWindow" && <ChatWindow chatWith={chatWith} />}
       {currentPage === "Home" && (
@@ -47,8 +49,8 @@ const HomePage = ({
               const userID = fetchUsersData.filter((user) => {
                 return post.userId === user.id;
               });
-              console.log("userID", userID[0].username);
-              return <Posts key={index} {...post} username={userID[0].username} />;
+              console.log("userID", userID[0]);
+              return <Posts key={index} {...post} username={userID[0].username} ProfilePicture={userID[0].ProfilePicture} />;
             })
           ) : (
             <Loading />

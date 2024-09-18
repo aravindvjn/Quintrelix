@@ -23,14 +23,14 @@ const Posts = (props) => {
       <div className="post">
         <div className="flex">
           <img
-            src={props.avatar || defalutProfile}
+            src={props.ProfilePicture || defalutProfile}
             alt=""
             className="post-profile"
           />
           <p className="post-username">{props.username}</p>
         </div>
-        <p className="post-caption">{props.caption}</p>
         <img src={props.urlData} alt="" className="post-img" />
+        <p className="post-caption" style={{marginTop:'5px',marginBottom:'5px'}}>{props.caption}</p>
         <div className="flex gap-3 mb-2">
           {" "}
           {liked ? (
@@ -46,12 +46,12 @@ const Posts = (props) => {
               style={{ cursor: "pointer" }}
             />
           )}{" "}
-          <ChatBubbleOutlineIcon
+          {/* <ChatBubbleOutlineIcon
             sx={{ color: "white" }}
             style={{ cursor: "pointer" }}
-          />{" "}
+          />{" "} */}
         </div>
-        <p className="post-username">{likedCount} likes</p>
+        {/* <p className="post-username">{likedCount} likes</p>
         <p className="view-comments">View all {props.comments} comment</p>
         <div className="flex-sb">
           <input
@@ -60,7 +60,7 @@ const Posts = (props) => {
             className="input-add-comment"
           />
           <button className="post-comment">post</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ const ChatBody = ({ messages, user }) => {
   }, [messages]);
   return (
     <div className="chat-window-body">
-      {messages.map((message, index) => {
+      {messages.length>0? messages.map((message, index) => {
+        console.log("message",message.text,"USER",message.senderId)
         return (
           <Messages
             key={index}
@@ -18,7 +19,7 @@ const ChatBody = ({ messages, user }) => {
             who={message.senderId === user.uid ? true : false}
           />
         );
-      })}
+      }) : <p style={{textAlign:'center',marginTop:'50%'}}>No messages here yet...</p>}
       <span ref={lastMessageRef}></span>
     </div>
   );

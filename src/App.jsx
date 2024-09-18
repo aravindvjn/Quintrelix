@@ -10,7 +10,7 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/auth"  element={<Auth />}/>
+        <Route exact path="/auth"  element={<Auth />}/>
         <Route exact path="/"  element={<Home />}/>
         
       </Routes>

@@ -46,7 +46,7 @@ const ChatWindow = ({ chatWith }) => {
       <div className="chat-window-footer">
         <form className="flex" onSubmit={sendMessage}>
           <textarea
-            type="text"
+            type="text" placeholder="Type..."
             value={newMessage}
             className="chat-window-input"
             onChange={(e) => {

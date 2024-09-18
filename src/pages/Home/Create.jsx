@@ -7,7 +7,9 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 const Create = ({setCurrentPage}) => {
+  const navigate= useNavigate();
   const [uploadPercentage,setUploadPercentage] = useState();
   const [caption, setCaption] = useState("empty.........");
   const { app, auth, firestore, storage } = useContext(FirebaseContext);
@@ -19,7 +21,7 @@ const Create = ({setCurrentPage}) => {
       <div className="create-div">
         {uploadPercentage && <p>{uploadPercentage}</p>}
       {image && (
-        <img style={{objectFit:'cover'}}
+        <img style={{objectFit:'cover',backgroundColor:'black',borderRadius:'5px'}}
           src={URL.createObjectURL(image)}
           width="200px"
           height="250px"
@@ -34,11 +36,11 @@ const Create = ({setCurrentPage}) => {
           accept=".jpg,.png"
           type="file"
         />
-        <textarea className="caption-input" onChange={(e)=>{
+        <textarea className="caption-input" placeholder="Write a caption..." onChange={(e)=>{
           setCaption(e.target.value)
         }} />{" "}
         <button
-          style={{ backgroundColor: "red" }}
+          style={{ backgroundColor: "red",border:'1px solid white',borderRadius:'7px' }}
           onClick={() => {
             if (!image) {
               console.log("No image selected");
@@ -46,7 +48,7 @@ const Create = ({setCurrentPage}) => {
             }
 
             const storage = getStorage();
-            const dateName = image.name + new Date();
+            const dateName = image.name + new Date() + user.uid;
             const storageRef = ref(storage, `images/${dateName}`);
 
             const uploadTask = uploadBytesResumable(storageRef, image);
@@ -69,11 +71,12 @@ const Create = ({setCurrentPage}) => {
                     await setDoc(doc(firestore, "images", dateName), {
                       urlData: url,
                       userId: user.uid,
+                      ProfilePicture:user.photoURL,
                       createdAt: new Date(),
                       caption: caption,
                     });
                     setCurrentPage("Home")
-                  window.location.reload(true);
+                    navigate("/")
                     console.log("URL added to Firestore");
                   } catch (e) {
                     console.error("Error adding URL to Firestore:", e);

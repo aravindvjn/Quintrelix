@@ -77,6 +77,10 @@
     max-height: 200px;
 
 }
+
+.chat-window-input::-webkit-scrollbar{
+    display: none;
+}
 .chat-window-send-button{
     background-color: rgb(0, 137, 0);
     border-radius: 5px;

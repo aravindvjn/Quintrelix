@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import IndividualChat from "./Features/IndividualChat";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
-import { AuthContext } from "../../firebase/context";
 
 const Chat = ({
   setCurrentPage,
@@ -10,17 +9,16 @@ const Chat = ({
   fetchUsersData,
   fetchFreindsData,
 }) => {
-  const { user, setUser, setTheData } = useContext(AuthContext);
   // const { auth } = useContext(FirebaseContext);
   console.log("your friends", fetchFreindsData);
+  const [yourFriends, setYourFriends] = useState();
 
-  useEffect(() => {});
   return (
     <div className="chat-parent">
       <div className="flex">
         {" "}
-        <p style={{ marginBottom: "0", marginLeft: "20px" }}>Messages</p>
-        <button
+        <p style={{ marginBottom: "0", marginLeft: "20px" }}>Friends</p>
+        {/* <button
           className="chat-add-button"
           onClick={async () => {
             const findPerson = window.prompt("Enter the username");
@@ -33,14 +31,9 @@ const Chat = ({
                 try {
                   await setDoc(doc(firestore, user.uid, foundPerson[0].id), {
                     friendId: foundPerson[0].id,
-                    yourId: user.uid,
-                    username: foundPerson[0].username,
-                    createdAt: new Date(),
-                  });
-                  await setDoc(doc(firestore, foundPerson[0].id, user.uid), {
-                    friendsId: user.uid,
+                    ProfilePicture: foundPerson[0].ProfilePicture || '',
                     username: user.displayName,
-                    yourId: foundPerson[0].id,
+                    yourId: user.uid,
                     createdAt: new Date(),
                   });
                   // window.location.reload(true);
@@ -55,11 +48,11 @@ const Chat = ({
           }}
         >
           Add chats
-        </button>
+        </button> */}
       </div>
 
       <hr />
-      {fetchFreindsData &&
+      {/* {fetchFreindsData &&
         fetchFreindsData.map((person) => {
           console.log("person", person);
           return (
@@ -70,7 +63,26 @@ const Chat = ({
               setChatWith={setChatWith}
             />
           );
-        })}
+        })} */}
+      {fetchFreindsData &&
+        fetchFreindsData
+          .map((friend) => {
+            return fetchUsersData.filter((userF) => {
+              return friend.id === userF.id && <p>hai</p>;
+            });
+          })
+          .map((person) => {
+            console.log("friends", person);
+            return (
+              <IndividualChat
+                key={person.id}
+                person={person[0]}
+                setCurrentPage={setCurrentPage}
+                setChatWith={setChatWith}
+              />
+            );
+          })}
+          {fetchFreindsData.length<=0 && <p style={{ textAlign:'center'}}>No Friends</p>}
     </div>
   );
 };

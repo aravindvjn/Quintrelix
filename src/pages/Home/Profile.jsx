@@ -7,14 +7,23 @@ import Posts from "./Posts";
 import Loading from "../Loading/Loading";
 import { deleteDoc, doc, Firestore } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
+import ServerLoading from "../Loading/ServerLoading";
+import EditProfile from "./Features/EditProfile";
 
-const Profile = ({ postsFromFireBase, setCurrentPage }) => {
+const Profile = ({
+  postsFromFireBase,
+  setCurrentPage,
+  fetchUsersData,
+  fetchFreindsData,
+}) => {
   const { user, theData } = useContext(AuthContext);
   const [showPost, setShowPost] = useState(false);
   const [showPosts, setShowPosts] = useState();
   const [noPost, setNoPost] = useState(0);
   const history = useNavigate();
+  const [serverLoading, setServerLoading] = useState(false);
   const { auth } = useContext(FirebaseContext);
+  const [showEdit, setShowEdit] = useState(false);
   const showPostHandler = (url) => {
     setShowPosts(
       <div className="profile-click-post">
@@ -30,14 +39,14 @@ const Profile = ({ postsFromFireBase, setCurrentPage }) => {
           className="profile-edit-post"
           onClick={() => {
             const userResponse = confirm("Do you want to proceed?");
-
             if (userResponse) {
+              setServerLoading(true);
               async function deleteDocument(collectionName, documentId) {
                 try {
                   await deleteDoc(doc(firestore, collectionName, documentId));
                   console.log("Document successfully deleted!");
-                  window.location.reload(true);
                   setCurrentPage("Home");
+                  history("/");
                 } catch (error) {
                   console.error("Error deleting document: ", error);
                 }
@@ -45,6 +54,7 @@ const Profile = ({ postsFromFireBase, setCurrentPage }) => {
 
               deleteDocument("images", url.id);
               console.log("User clicked Yes (OK)");
+              setServerLoading(false);
             } else {
               console.log("User clicked No (Cancel)");
             }
@@ -61,38 +71,59 @@ const Profile = ({ postsFromFireBase, setCurrentPage }) => {
   }, []);
   return (
     <div className="profile-div mt-3">
+      {showEdit && (
+        <EditProfile
+          setShowEdit={setShowEdit}
+          fetchUsersData={fetchUsersData}
+        />
+      )}
+      {serverLoading && <ServerLoading />}
       <div className="flex">
         <img
-          src={defalutProfile}
+          src={user.photoURL || defalutProfile}
           alt="profile picture"
           className="profile-pic"
         />
         <div className="profile-details">
           <p id="profile-username">{user.displayName}</p>
-          <button
-            className="logout"
-            onClick={async () => {
-              try {
-                await signOut(auth).then(() => {
-                  history("/auth");
-                });
-              } catch (error) {
-                console.error("Error logging out:", error);
-              }
-            }}
-          >
-            Logout
-          </button>
+          <div>
+            <button
+              className="logout"
+              onClick={() => {
+                setShowEdit(true);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              className="logout"
+              onClick={async () => {
+                try {
+                  await signOut(auth).then(() => {
+                    history("/auth");
+                  });
+                } catch (error) {
+                  console.error("Error logging out:", error);
+                }
+              }}
+            >
+              Logout
+            </button>
+          </div>
           <div>
             <p>
               <strong>{noPost}</strong> posts
             </p>
+
             <p>
+              <strong>{fetchFreindsData.length}</strong> Friends
+            </p>
+            {/* <p>
               <strong>{theData.followersCount}</strong> Followers
             </p>
             <p>
               <strong>{theData.followingCount}</strong> Following
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -108,17 +139,17 @@ const Profile = ({ postsFromFireBase, setCurrentPage }) => {
               transform: "translateX(-50%)",
             }}
           >
-            posts
+            Posts
           </p>
-          {postsFromFireBase ? (
+          {postsFromFireBase.length > 0 ? (
             postsFromFireBase
               .filter((post) => {
                 return post.userId === user.uid;
               })
-              .map((profilePost,index) => {
+              .map((profilePost, index) => {
                 return (
                   <img
-                  key={index}
+                    key={index}
                     src={profilePost.urlData}
                     alt=""
                     className="profile-post"
@@ -130,12 +161,13 @@ const Profile = ({ postsFromFireBase, setCurrentPage }) => {
                 );
               })
           ) : (
-            <Loading />
+            <p>No Post</p>
           )}
         </div>
       ) : (
         showPosts
       )}
+      {noPost===0&&<p style={{textAlign:'center'}}>No posts</p>}
     </div>
   );
 };

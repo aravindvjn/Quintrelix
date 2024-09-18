@@ -11,6 +11,58 @@
     font-size: 14px;
     line-height: 16px;
 }
+.edit-fixed-parent{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.468);
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    backdrop-filter: blur(15px);
+}
+.edit form{
+    position: relative;
+    background-color: #311d3f;
+    padding: 40px 20px ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    color: black;
+}
+.edit-close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid black;
+}
+.edit-photo{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.edit-username{
+    padding-left: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid silver;
+    color: black;
+    margin-bottom: 20px;
+}
+.edit-button{
+    background-color: #311d3f;
+    border: 1px solid white;
+    color: white;
+    margin: auto;
+    border-radius: 7px;
+
+}
 @media (max-width:1000px){
     .notification p{
         color: black;
