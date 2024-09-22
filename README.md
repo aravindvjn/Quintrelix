@@ -2,6 +2,7 @@ Quintrelix
 
 Quintrelix is a dynamic social media platform built using React and Firebase. It allows users to share content, chat with friends in real time, and customize their profiles for a personalized experience. Quintrelix is optimized for social connectivity and offers a sleek, modern, and responsive design.
 
+
 Features
 
 Home Page: View posts from other users in your network.
