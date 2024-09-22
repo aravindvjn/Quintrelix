@@ -1,8 +1,26 @@
-# React + Vite
+Quintrelix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quintrelix is a dynamic social media platform built using React and Firebase. It allows users to share content, chat with friends in real time, and customize their profiles for a personalized experience. Quintrelix is optimized for social connectivity and offers a sleek, modern, and responsive design.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Home Page: View posts from other users in your network.
+
+Search Page: Search for users.
+
+Chat Page: Real-time chat functionality.
+
+Create Content Page: Post photos and share your thoughts with friends.
+
+Profile Customization: Edit username, profile picture, and update your personal information.
+
+Authentication Page: Secure sign-up and login using Firebase Authentication.
+
+Responsive Design: Optimized for mobile, tablet, and desktop devices.
+
+
+Tech Stack
+
+Frontend: React (created using Vite)
+
+Backend: Firebase for real-time database, authentication, and storage
