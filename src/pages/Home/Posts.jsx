@@ -3,10 +3,12 @@ import defalutProfile from "../../assets/defaultProfile.jpg";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ProfileView from "./Features/ProfileView";
 
 const Posts = (props) => {
   const [liked, setLiked] = useState(false);
   const [likedCount, setLikedCount] = useState(Number(props.like));
+  const [profileView,setProfileView] = useState(false)
   const likeHandler = () => {
     setLiked(() => {
       if (liked) {
@@ -20,13 +22,16 @@ const Posts = (props) => {
   };
   return (
     <div className="post-parent">
+      {profileView && <ProfileView {...props} setProfileView={setProfileView}/>}
       <div className="post">
-        <div className="flex">
+        <div className="flex" onClick={()=>{
+          setProfileView(true)
+        }}>
           <img
             src={props.ProfilePicture || defalutProfile}
             alt=""
             className="post-profile"
-          />
+          /> 
           <p className="post-username">{props.username}</p>
         </div>
         <img src={props.urlData} alt="" className="post-img" />
