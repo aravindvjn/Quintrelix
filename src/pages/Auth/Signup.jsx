@@ -22,7 +22,7 @@ const Signup = ({ setLogin, setWarning, setServerLoading }) => {
         ...doc.data(),
       }));
       setExistUser(existingUser);
-      console.log("existing user at login", existingUser);
+      // console.log("existing user at login", existingUser);
     }
     fetchExistingData();
   }, []);
@@ -100,7 +100,7 @@ const Signup = ({ setLogin, setWarning, setServerLoading }) => {
                   displayName: inputs.username,
                 });
 
-                console.log("Logged in successfully!");
+                // console.log("Logged in successfully!");
                 const user = userCredential.user;
                 await setDoc(doc(firestore, "users", user.uid), {
                   username: inputs.username,

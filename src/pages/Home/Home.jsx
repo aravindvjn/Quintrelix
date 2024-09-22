@@ -16,6 +16,7 @@ import {
 import { firestore } from "../../firebase/firebase";
 import ServerLoading from "../Loading/ServerLoading";
 import Timer from "../Loading/Timer";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [fetchUsersData, setFetchUsersData] = useState([]);
   const [fetchFreindsData, setFetchFreindsData] = useState([]);
@@ -80,16 +81,21 @@ const Home = () => {
       const userList = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        
       }));
 
       setFetchFreindsData(userList);
       // console.log("friends datas", userList);
     }
+
+
     fetchImages();
     fetchFriends();
     fetchUser();
     return () => unsubscribe();
   }, [currentPage]);
+
+
   return (
     <div className="home row">
       {timer && <Timer />}
