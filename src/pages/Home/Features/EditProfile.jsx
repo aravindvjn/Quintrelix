@@ -32,6 +32,7 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
               })
               if (doesExist.length > 0) {
                 // console.log("user already exists")
+                alert("Username already taken")
               } else {
 
 

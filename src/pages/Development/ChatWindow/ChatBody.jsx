@@ -11,7 +11,7 @@ const ChatBody = ({ messages, user }) => {
   return (
     <div className="chat-window-body">
       {messages.length>0? messages.map((message, index) => {
-        console.log("message",message.text,"USER",message.senderId)
+        // console.log("message",message.text,"USER",message.senderId)
         return (
           <Messages
             key={index}
