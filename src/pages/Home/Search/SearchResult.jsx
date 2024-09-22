@@ -26,7 +26,7 @@ const SearchResult = ({ person, fetchFreindsData }) => {
           if (addFriend) {
             deleteDoc(doc(firestore, user.uid, person.id))
               .then(() => {
-                console.log("Document successfully deleted!");
+                // console.log("Document successfully deleted!");
                 setAddFriend(false);
               })
               .catch((error) => {
@@ -41,10 +41,10 @@ const SearchResult = ({ person, fetchFreindsData }) => {
                 yourId: user.uid,
                 createdAt: new Date(),
               });
-              console.log("Friend added");
+              // console.log("Friend added");
               setAddFriend(true)
             } catch (e) {
-              console.error("Error adding friend to Firestore:", e);
+              // console.error("Error adding friend to Firestore:", e);
             }
           }
         }}

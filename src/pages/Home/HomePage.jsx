@@ -18,9 +18,9 @@ const HomePage = ({
   fetchFreindsData
 }) => {
   useEffect(() => {
-    console.log("posts", postsFromFireBase);
-    console.log("users", fetchUsersData);
-    console.log("friends", fetchFreindsData);
+    // console.log("posts", postsFromFireBase);
+    // console.log("users", fetchUsersData);
+    // console.log("friends", fetchFreindsData);
   }, [postsFromFireBase, fetchUsersData,fetchFreindsData]);
 
 
@@ -49,7 +49,7 @@ const HomePage = ({
               const userID = fetchUsersData.filter((user) => {
                 return post.userId === user.id;
               });
-              console.log("userID", userID[0]);
+              // console.log("userID", userID[0]);
               return <Posts key={index} {...post} username={userID[0].username} ProfilePicture={userID[0].ProfilePicture} />;
             })
           ) : (

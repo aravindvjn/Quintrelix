@@ -34,14 +34,14 @@ const Home = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
+      // console.log(currentUser);
       const userDocRef = doc(firestore, "users", currentUser.uid);
       onSnapshot(userDocRef, (docSnap) => {
         if (docSnap.exists()) {
-          console.log("Real-time updated data:", docSnap.data());
+          // console.log("Real-time updated data:", docSnap.data());
           setTheData(docSnap.data());
         } else {
-          console.log("No such document!");
+          // console.log("No such document!");
         }
       });
     });
@@ -54,7 +54,7 @@ const Home = () => {
         ...doc.data(),
       }));
       setPostsFromFireBase(userList);
-      console.log("images datas", userList);
+      // console.log("images datas", userList);
     }
     async function fetchUser() {
       const usersCollection = collection(firestore, "users");
@@ -64,7 +64,7 @@ const Home = () => {
         ...doc.data(),
       }));
       setFetchUsersData(userList);
-      console.log("users datas", userList);
+      // console.log("users datas", userList);
       if (count) {
         SetTimer(true);
         setServerLoading(false);
@@ -83,7 +83,7 @@ const Home = () => {
       }));
 
       setFetchFreindsData(userList);
-      console.log("friends datas", userList);
+      // console.log("friends datas", userList);
     }
     fetchImages();
     fetchFriends();

@@ -43,7 +43,8 @@ const Create = ({setCurrentPage}) => {
           style={{ backgroundColor: "red",border:'1px solid white',borderRadius:'7px' }}
           onClick={() => {
             if (!image) {
-              console.log("No image selected");
+              // console.log("No image selected");
+              alert("No Image Selected")
               return;
             }
 
@@ -58,15 +59,15 @@ const Create = ({setCurrentPage}) => {
               (snapshot) => {
                 const progress =
                   (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log("Upload is " + progress + "% done");
+                // console.log("Upload is " + progress + "% done");
                 setUploadPercentage("Upload is " + Math.floor(progress) + "% done");
               },
               (error) => {
-                console.error("Error during upload:", error);
+                // console.error("Error during upload:", error);
               },
               () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
-                  console.log("File available at", url);
+                  // console.log("File available at", url);
                   try {
                     await setDoc(doc(firestore, "images", dateName), {
                       urlData: url,
@@ -77,9 +78,9 @@ const Create = ({setCurrentPage}) => {
                     });
                     setCurrentPage("Home")
                     navigate("/")
-                    console.log("URL added to Firestore");
+                    // console.log("URL added to Firestore");
                   } catch (e) {
-                    console.error("Error adding URL to Firestore:", e);
+                    // console.error("Error adding URL to Firestore:", e);
                   }
                 });
               }

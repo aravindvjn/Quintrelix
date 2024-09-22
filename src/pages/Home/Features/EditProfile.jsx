@@ -31,7 +31,7 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
                 return userMe.username !== user.displayName;
               })
               if (doesExist.length > 0) {
-                console.log("user already exists")
+                // console.log("user already exists")
               } else {
 
 
@@ -44,15 +44,15 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
                     (snapshot) => {
                       const progress =
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                      console.log("Upload is " + progress + "% done");
+                      // console.log("Upload is " + progress + "% done");
                     },
                     (error) => {
-                      console.error("Error during upload:", error);
+                      // console.error("Error during upload:", error);
                     },
                     () => {
                       getDownloadURL(uploadTask.snapshot.ref).then(
                         async (url) => {
-                          console.log("File available at", url);
+                          // console.log("File available at", url);
 
                           const user = getAuth().currentUser;
 
@@ -62,30 +62,30 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
                                 photoURL: url,
                               });
 
-                              console.log(
-                                "Profile picture updated successfully!"
-                              );
-                              console.log("profile url", user.photoURL);
+                              // console.log(
+                              //   "Profile picture updated successfully!"
+                              // );
+                              // console.log("profile url", user.photoURL);
                             } catch (error) {
-                              console.error(
-                                "Error updating profile picture :",
-                                error
-                              );
+                              // console.error(
+                              //   "Error updating profile picture :",
+                              //   error
+                              // );
                             }
                           } else {
-                            console.log("No user is logged in.");
+                            // console.log("No user is logged in.");
                           }
 
                           try {
                             await updateDoc(doc(firestore, "users", user.uid), {
                               ProfilePicture: url,
                             });
-                            console.log("Profile Picture updated successfully");
+                            // console.log("Profile Picture updated successfully");
                           } catch (error) {
-                            console.error(
-                              "Error updating Profile Picture : ",
-                              error
-                            );
+                            // console.error(
+                            //   "Error updating Profile Picture : ",
+                            //   error
+                            // );
                           }
                         }
                       );
@@ -119,9 +119,9 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
                     await updateDoc(userRef, {
                       username: newUsername,
                     });
-                    console.log("Username updated successfully");
+                    // console.log("Username updated successfully");
                   } catch (error) {
-                    console.error("Error updating username: ", error);
+                    // console.error("Error updating username: ", error);
                   }
                 };
                 updateUser(user.uid, editUsername);
@@ -135,13 +135,13 @@ const EditProfile = ({ setShowEdit,fetchUsersData }) => {
                         displayName: newDisplayName,
                       });
 
-                      console.log("Display name updated successfully!");
-                      console.log("New display name:", user.displayName);
+                      // console.log("Display name updated successfully!");
+                      // console.log("New display name:", user.displayName);
                     } catch (error) {
-                      console.error("Error updating display name:", error);
+                      // console.error("Error updating display name:", error);
                     }
                   } else {
-                    console.log("No user is logged in.");
+                    // console.log("No user is logged in.");
                   }
                 };
                 updateUserDisplayName(editUsername);

@@ -9,16 +9,16 @@ const Search = ({ fetchUsersData,fetchFreindsData }) => {
 
   const serachThePerson = (e) => {
     setSearchInput(e.target.value);
-    console.log("the length", e.target.value.length);
+    // console.log("the length", e.target.value.length);
     setFoundUser(() => {
       return fetchUsersData
         .filter((userF) => {
           return (
-            userF.username.slice(0, e.target.value.length) === e.target.value
+            (userF.username.slice(0, e.target.value.length)).toLowerCase() === (e.target.value).toLowerCase()
           );
         })
         .map((found) => {
-          console.log(found.username);
+          // console.log(found.username);
           return <SearchResult person={found} fetchFreindsData={fetchFreindsData}/>;
         });
     });

@@ -44,19 +44,19 @@ const Profile = ({
               async function deleteDocument(collectionName, documentId) {
                 try {
                   await deleteDoc(doc(firestore, collectionName, documentId));
-                  console.log("Document successfully deleted!");
+                  // console.log("Document successfully deleted!");
                   setCurrentPage("Home");
                   history("/");
                 } catch (error) {
-                  console.error("Error deleting document: ", error);
+                  // console.error("Error deleting document: ", error);
                 }
               }
 
               deleteDocument("images", url.id);
-              console.log("User clicked Yes (OK)");
+              // console.log("User clicked Yes (OK)");
               setServerLoading(false);
             } else {
-              console.log("User clicked No (Cancel)");
+              // console.log("User clicked No (Cancel)");
             }
           }}
         >
@@ -103,7 +103,7 @@ const Profile = ({
                     history("/auth");
                   });
                 } catch (error) {
-                  console.error("Error logging out:", error);
+                  // console.error("Error logging out:", error);
                 }
               }}
             >
