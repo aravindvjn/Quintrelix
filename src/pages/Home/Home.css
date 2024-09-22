@@ -119,6 +119,7 @@ img.q-logo {
 
 .post-profile {
     height: 30px;
+    object-fit: cover;
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;

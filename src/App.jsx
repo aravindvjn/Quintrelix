@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route exact path="/auth"  element={<Auth />}/>
         <Route exact path="/"  element={<Home />}/>
-        
       </Routes>
     </BrowserRouter>
     </>
