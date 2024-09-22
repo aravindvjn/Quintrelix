@@ -6,7 +6,7 @@ import { AuthContext, FirebaseContext } from "../../../firebase/context";
 import { firestore } from "../../../firebase/firebase";
 import { addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
 const ChatWindow = ({ chatWith }) => {
-  console.log("chat with", chatWith);
+  // console.log("chat with", chatWith);
   const { user } = useContext(AuthContext);
   const { auth } = useContext(FirebaseContext);
   const [messages, setMessages] = useState([]);
@@ -22,13 +22,13 @@ const ChatWindow = ({ chatWith }) => {
       const msgs = snapshot.docs.map((doc) => doc.data());
       setMessages(msgs);
     });
-
     return () => unsubscribe();
   }, [chatId]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
     if (newMessage.trim() === "") return;
+    setNewMessage("");
 
     await addDoc(collection(firestore, "chats", chatId, "messages"), {
       text: newMessage,
@@ -36,7 +36,6 @@ const ChatWindow = ({ chatWith }) => {
       senderId: user.uid,
       recipientId:chatWith.id,
     });
-    setNewMessage("");
   };
 
   return (

@@ -32,7 +32,7 @@ const Chat = ({
           .map((person) => {
             // console.log("friends", person);
             return (
-              <IndividualChat
+              <IndividualChat 
                 key={person.id}
                 person={person[0]}
                 setCurrentPage={setCurrentPage}

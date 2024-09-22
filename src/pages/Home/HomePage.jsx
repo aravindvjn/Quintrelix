@@ -23,7 +23,6 @@ const HomePage = ({
     // console.log("friends", fetchFreindsData);
   }, [postsFromFireBase, fetchUsersData,fetchFreindsData]);
 
-
   const [chatWith,setChatWith] = useState();
   return (
     <div className="home-page col-sm-6 col-10">
