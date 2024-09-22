@@ -10,7 +10,7 @@ const Chat = ({
   fetchFreindsData,
 }) => {
   // const { auth } = useContext(FirebaseContext);
-  console.log("your friends", fetchFreindsData);
+  // console.log("your friends", fetchFreindsData);
   const [yourFriends, setYourFriends] = useState();
 
   return (
@@ -30,7 +30,7 @@ const Chat = ({
             });
           })
           .map((person) => {
-            console.log("friends", person);
+            // console.log("friends", person);
             return (
               <IndividualChat
                 key={person.id}
