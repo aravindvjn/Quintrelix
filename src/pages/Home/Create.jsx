@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Create = ({setCurrentPage}) => {
   const navigate= useNavigate();
   const [uploadPercentage,setUploadPercentage] = useState();
-  const [caption, setCaption] = useState("empty.........");
+  const [caption, setCaption] = useState("");
   const { app, auth, firestore, storage } = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const [image, setImage] = useState("");
