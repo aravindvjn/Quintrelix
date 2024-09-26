@@ -24,7 +24,7 @@ const Posts = (props) => {
     <div className="post-parent">
       {profileView && <ProfileView {...props} setProfileView={setProfileView}/>}
       <div className="post">
-        <div className="flex" onClick={()=>{
+        <div className="flex" style={{cursor:'pointer'}} onClick={()=>{
           setProfileView(true)
         }}>
           <img

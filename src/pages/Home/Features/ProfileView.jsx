@@ -1,9 +1,10 @@
 import React from "react";
+import defaultPic from '../../../assets/defaultProfile.jpg'
 
 const ProfileView = ({ setProfileView, username, ProfilePicture }) => {
   return (
     <div
-      className="edit-fixed-parent"
+      className="edit-fixed-parent" 
       onClick={() => {
         setProfileView(false);
       }}
@@ -11,7 +12,7 @@ const ProfileView = ({ setProfileView, username, ProfilePicture }) => {
       <div className="edit">
         <div className="flex">
           <img
-            src={ProfilePicture}
+            src={ProfilePicture || defaultPic}
             alt="profile picture"
             className="profile-pic" style={{width:'250px',height:'250px'}}
           />

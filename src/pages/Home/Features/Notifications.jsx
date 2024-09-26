@@ -12,7 +12,7 @@ const Notifications = () => {
           <div className="notifications">
            <div className="flex" style={{alignItems:'start',transform:'translateX(-30px)'}}>
             <Avatar avatar={logo}/>
-           <div className="notification">
+           <div className="notification" >
             <p>Hey! Welcome to Quintrelix!. Stay connected with friends and family, share your moments, and explore new updates. Have a great time!"</p>
             </div>
            </div>
